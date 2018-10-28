@@ -25,6 +25,7 @@ Ideas:
 11) Done - Enginge on and off counter must be minutes and not iterations
 12) Done - The counter uploaded for thingspeak must contain a status counter instead (minutes in latest state).
 13) Read sensors in a thread configured for sensor a and b with parametre.
+14) Make myAPI dependant on the IP Addr in order to make the device in Søndervig running on same codebase.
 
 
  
