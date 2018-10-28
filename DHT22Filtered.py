@@ -119,7 +119,7 @@ def readingValues(SensorToUse, ResetPin):
                 [humidity, temp] = Adafruit_DHT.read_retry(Adafruit_DHT.DHT22, SensorToUse)
                 lock.release()
             except IOError:
-                print("we've got IO error on sensor 9")
+                print("Execption! IO error on sensor - continue.")
             print("RawData hum, tmp:", humidity, temp)
 
             if(SensorToUse == 10):
@@ -238,7 +238,7 @@ def Main():
                f.close() 
 
             except:
-               print("Oops!  That was an error - just continue...")
+               print("Exeception! Connection to Thingspeak couldn't be established - just continue...")
 
             
             print("------------------------------------------------")
