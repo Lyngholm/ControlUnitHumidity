@@ -9,7 +9,6 @@ Support of DHT22 in Python 3: https://github.com/adafruit/Adafruit_Python_DHT
 Filter to avoid spurious values: https://forum.dexterindustries.com/t/solved-dht-sensor-occasionally-returning-spurious-values/2939/5
 urllib python2->python3: https://stackoverflow.com/questions/2792650/import-error-no-module-name-urllib2
 
-
 Ideas:
 1) Done - Create a filter function to get rid of false peaks from sensors
 2) Done - Make the functionaly as function humidity instead of timing (need data to be exchanged between python scripts).
