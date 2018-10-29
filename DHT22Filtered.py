@@ -189,10 +189,10 @@ def Main():
             
     
             # here you can do whatever you want with the variables: print them, file them out, anything
-            lock.acquire()
+#            lock.acquire()
             temperature_Sensor9 = filtered_temperature_Sensor9.pop()
             humidity_Sensor9 = filtered_humidity_Sensor9.pop()
-            lock.release() 
+#            lock.release() 
             print('{},{:.01f},{:.01f}' .format(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), temperature_Sensor9, humidity_Sensor9))
 
             
