@@ -187,7 +187,7 @@ def Main():
             humidity_Sensor9 = filtered_humidity_Sensor9.pop()
             print('{},{:.01f},{:.01f}' .format(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), temperature_Sensor9, humidity_Sensor9))
             
-            #   EngineControl
+            #   EngineControl 
             if(humidity_Sensor9 > MaxHumidityBeforeStart):# and EngineStatus == "OFF"):
                 if(humidityHighCounter > 2):
                     GPIO.output(RELAY, ON)                  # RELAY set GPIO24 to 1/GPIO.HIGH/True  
