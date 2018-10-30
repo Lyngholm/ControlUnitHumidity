@@ -158,15 +158,32 @@ def readingValues(SensorToUse, ResetPin):
             MeasuredInvalidInARow +=1 #Increment value
             print("MeasuredInvalidInARow:", MeasuredInvalidInARow)
             print("MeasuredValidInARow:", MeasuredValidDataInARow)
+
+def upload_data_thingspeak():
+    baseURL = 'https://api.thingspeak.com/update?api_key=%s' % myAPI   
+    while(1):
+        try:
+               if(EngineStatus == "ON"):  #Enginge is ON
+                    f = urllib.request.urlopen(baseURL + "&field1=%s&field2=%s&field3=%s&field4=%s&field5=%s" % (humidity_Sensor9, temperature_Sensor9, EngineOn, EngineOnCounter, EngineOffCounter))
+               else:
+                    f = urllib.request.urlopen(baseURL + "&field1=%s&field2=%s&field3=%s&field4=%s&field5=%s" % (humidity_Sensor9, temperature_Sensor9, EngineOn, EngineOffCounter, EngineOnCounter))
+               print(f.read()) 
+               f.close() 
+
+            except:
+               print("Exeception! Connection to Thingspeak couldn't be established - just continue...")
             
+            print("----------Data sent to thingspeak--------------------------------------")
+            sleep(20)
+
 def Main():
     # here we start the thread
     # we use a thread in order to gather/process the data separately from the printing proceess
     data_collector_Sens9 = threading.Thread(name='ReadSensor9', target = readingValues, args=(9,OC_11,))
     data_collector_Sens9.start()
-#    data_collector_Sens10 = threading.Thread(name='ReadSensor10', target = readingValues, args=(10, OC_13,))
-#    data_collector_Sens10.start()
-    baseURL = 'https://api.thingspeak.com/update?api_key=%s' % myAPI 
+    data_upload = threading.Thread(name='upload_data_thingspeak', target = upload_data_thingspeak, args=())
+    data_upload.start()
+    
     MaxHumidityBeforeStart = 63 #Humidty to exceed efore engine starts
     MinHumidityBeforeStop = 57 #Humdity before engine stops
     EngineStatus = "OFF"
