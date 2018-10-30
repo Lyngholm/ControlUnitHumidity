@@ -26,10 +26,7 @@ Ideas:
 13) Read sensors in a thread configured for sensor a and b with parametre.
 14) Make myAPI dependant on the IP Addr in order to make the device in Søndervig running on same codebase.
 
-
- 
 """
-
 
 import sys 
 import RPi.GPIO as GPIO 
@@ -43,15 +40,19 @@ import urllib.request #Python 3
 #datetime.datetime.now()
 #myAPI = "07NQR132PCXPDSGD"      #Used for Søndervig account
 myAPI = "LQYHZ7MCQR6SK6T8"      #Used for Testbench account
+
+#Hardware Pins
 OC_11 = 17                              #GPIO 17 (open collector for reset of sensor 9)
 OC_13 = 27                              #GPIO 27 (open collector for reset of sensor 10)
 RELAY = 20
+sensor = 9  # The Sensor goes on digital port 4.
 
 GPIO.setmode(GPIO.BCM)             # choose BCM or BOARD
 GPIO.setup(OC_11, GPIO.OUT)           # GREEN LED set GPIO as an output
 GPIO.setup(OC_13, GPIO.OUT)           # GREEN LED set GPIO as an output
 GPIO.setup(RELAY, GPIO.OUT)           # RELAY set GPIO as an output
 
+#Logic definitions
 ON = 1
 OFF = 0
 FALSE = 0
@@ -60,20 +61,16 @@ TRUE = 1
 import math
 import numpy
 import threading
-
 from datetime import datetime
 
-sensor = 9  # The Sensor goes on digital port 4.
 # temp_humidity_sensor_type
 blue = 0    # The Blue colored sensor.
 white = 1   # The White colored sensor.
-
 
 filtered_temperature_Sensor9 = [] # here we keep the temperature values after removing outliers
 filtered_humidity_Sensor9 = [] # here we keep the filtered humidity values after removing the outliers
 filtered_temperature_Sensor10 = [] # here we keep the temperature values after removing outliers
 filtered_humidity_Sensor10 = [] # here we keep the filtered humidity values after removing the outliers
-
 
 lock = threading.Lock() # we are using locks so we don't have conflicts while accessing the shared variables
 event = threading.Event() # we are using an event so we can close the thread as soon as KeyboardInterrupt is raised
@@ -98,7 +95,7 @@ def eliminateNoise(values, std_factor = 2):
 # function for processing the data
 # filtering, periods of time, yada yada
 def readingValues(SensorToUse, ResetPin):
-    seconds_window = 6 #10 # after this many second we make a record
+    seconds_window = 10 # after this many second we make a record
     SensorCounter = 0
     values = []
     a=1
@@ -135,7 +132,6 @@ def readingValues(SensorToUse, ResetPin):
             else:
                 if(humidity > 100 or temp > 50):
                     print("Reset Sensor")
-
                     GPIO.setup(ResetPin, GPIO.OUT)           # GREEN LED set GPIO24 as an output
                     GPIO.output(ResetPin, OFF)       #Sensor 9 OFF
                     sleep(0.1)
@@ -185,16 +181,11 @@ def Main():
     
     while not event.is_set():
         if len(filtered_humidity_Sensor9) > 0: # or we could have used filtered_temperature instead
-
-            
-    
+             
             # here you can do whatever you want with the variables: print them, file them out, anything
-#            lock.acquire()
             temperature_Sensor9 = filtered_temperature_Sensor9.pop()
             humidity_Sensor9 = filtered_humidity_Sensor9.pop()
-#            lock.release() 
             print('{},{:.01f},{:.01f}' .format(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), temperature_Sensor9, humidity_Sensor9))
-
             
             #   EngineControl
             if(humidity_Sensor9 > MaxHumidityBeforeStart):# and EngineStatus == "OFF"):
@@ -212,8 +203,7 @@ def Main():
                 if(humidityLowCounter > 2):
                     GPIO.output(RELAY, OFF)                  # RELAY set GPIO24 to 1/GPIO.HIGH/True  
                     EngineStatus = "OFF"
-                    EngineOn = 0
-                    
+                    EngineOn = 0                  
                     EngineOnCounter = 0
                     humidityHighCounter = 0
                 humidityLowCounter += 1
@@ -238,10 +228,8 @@ def Main():
 
             except:
                print("Exeception! Connection to Thingspeak couldn't be established - just continue...")
-
             
             print("------------------------------------------------")
-#            lock.release()
         
 #        sleep(3)
         if(OldEngineStatus != EngineStatus):
