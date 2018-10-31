@@ -41,6 +41,11 @@ import urllib.request #Python 3
 #myAPI = "07NQR132PCXPDSGD"      #Used for Søndervig account
 myAPI = "LQYHZ7MCQR6SK6T8"      #Used for Testbench account
 
+#Raspberry PI Serials
+SerialNoWIFI = '000000006473aedd'
+#SerialNewest =
+#SerialSondervig =
+
 #Hardware Pins
 OC_11 = 17                              #GPIO 17 (open collector for reset of sensor 9)
 OC_13 = 27                              #GPIO 27 (open collector for reset of sensor 10)
@@ -196,11 +201,14 @@ def Main():
     OldDateTime = time.time()  
     PISerialNumber = 0
     
+    
     while not event.is_set():
+        if(PISerialNumber == 0):
+          PISerialNumber = getserial()   #Fetch the unique ID
+          print("Serial: ", PISerialNumber) 
+          if(PISerialNumber == SerialNoWIFI):
+            print("Raspberry Identified: RaspberryNoWIFI")
         if len(filtered_humidity_Sensor9) > 0: # or we could have used filtered_temperature instead
-            if(PISerialNumber !=0)
-                Serial = getserial()   #Fetch the unique ID
-                print("Serial: ", Serial) 
             # here you can do whatever you want with the variables: print them, file them out, anything
             temperature_Sensor9 = filtered_temperature_Sensor9.pop()
             humidity_Sensor9 = filtered_humidity_Sensor9.pop()
