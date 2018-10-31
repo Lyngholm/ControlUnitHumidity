@@ -199,7 +199,8 @@ def Main():
     while not event.is_set():
         if len(filtered_humidity_Sensor9) > 0: # or we could have used filtered_temperature instead
             if(PISerialNumber !=0)
-            
+                Serial = getserial()   #Fetch the unique ID
+                print("Serial: ", Serial) 
             # here you can do whatever you want with the variables: print them, file them out, anything
             temperature_Sensor9 = filtered_temperature_Sensor9.pop()
             humidity_Sensor9 = filtered_humidity_Sensor9.pop()
