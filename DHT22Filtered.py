@@ -43,7 +43,7 @@ myAPI = "LQYHZ7MCQR6SK6T8"      #Used for Testbench account
 
 #Raspberry PI Serials
 SerialNoWIFI = '000000006473aedd'
-#SerialNewest =
+SerialNewest = '000000002efbf320'
 #SerialSondervig =
 
 #Hardware Pins
@@ -208,6 +208,10 @@ def Main():
           print("Serial: ", PISerialNumber) 
           if(PISerialNumber == SerialNoWIFI):
             print("Raspberry Identified: RaspberryNoWIFI")
+          if(PISerialNumber == SerialNewest):
+            print("Raspberry Identified: RaspberryNewest")
+
+            
         if len(filtered_humidity_Sensor9) > 0: # or we could have used filtered_temperature instead
             # here you can do whatever you want with the variables: print them, file them out, anything
             temperature_Sensor9 = filtered_temperature_Sensor9.pop()
