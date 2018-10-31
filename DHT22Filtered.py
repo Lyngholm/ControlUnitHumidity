@@ -75,6 +75,22 @@ filtered_humidity_Sensor10 = [] # here we keep the filtered humidity values afte
 lock = threading.Lock() # we are using locks so we don't have conflicts while accessing the shared variables
 event = threading.Event() # we are using an event so we can close the thread as soon as KeyboardInterrupt is raised
 
+# This function read and return the unique serial number in the Raspberry PI
+def getserial():
+  # Extract serial from cpuinfo file
+  cpuserial = "0000000000000000"
+  try:
+    f = open('/proc/cpuinfo','r')
+    for line in f:
+      if line[0:6]=='Serial':
+        cpuserial = line[10:26]
+    f.close()
+  except:
+    cpuserial = "ERROR000000000"
+  return cpuserial
+
+
+
 # function which eliminates the noise
 # by using a statistical model
 # we determine the standard normal deviation and we exclude anything that goes beyond a threshold
@@ -178,10 +194,12 @@ def Main():
     humidityHighCounter = 0
     SecCounter = 0
     OldDateTime = time.time()  
+    PISerialNumber = 0
     
     while not event.is_set():
         if len(filtered_humidity_Sensor9) > 0: # or we could have used filtered_temperature instead
-             
+            if(PISerialNumber !=0)
+            
             # here you can do whatever you want with the variables: print them, file them out, anything
             temperature_Sensor9 = filtered_temperature_Sensor9.pop()
             humidity_Sensor9 = filtered_humidity_Sensor9.pop()
