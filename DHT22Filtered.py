@@ -38,13 +38,13 @@ import Adafruit_DHT
 #import urllib2 #Python 2
 import urllib.request #Python 3
 #datetime.datetime.now()
-#myAPI = "07NQR132PCXPDSGD"      #Used for Søndervig account
-myAPI = "LQYHZ7MCQR6SK6T8"      #Used for Testbench account
+myAPI_LSV33 = "07NQR132PCXPDSGD"      #Used for Søndervig account
+myAPI_TestACC = "LQYHZ7MCQR6SK6T8"      #Used for Testbench account
 
 #Raspberry PI Serials
 SerialNoWIFI = '000000006473aedd'
 SerialNewest = '000000002efbf320'
-# SerialSondervig =
+SerialLSV33 = '1111111111111111'
 
 #Hardware Pins
 OC_11 = 17                              #GPIO 17 (open collector for reset of sensor 9)
@@ -187,7 +187,7 @@ def Main():
     data_collector_Sens9.start()
 #    data_collector_Sens10 = threading.Thread(name='ReadSensor10', target = readingValues, args=(10, OC_13,))
 #    data_collector_Sens10.start()
-    baseURL = 'https://api.thingspeak.com/update?api_key=%s' % myAPI 
+
     MaxHumidityBeforeStart = 63 #Humidty to exceed efore engine starts
     MinHumidityBeforeStop = 57 #Humdity before engine stops
     EngineStatus = "OFF"
@@ -208,9 +208,13 @@ def Main():
           print("Serial: ", PISerialNumber) 
           if(PISerialNumber == SerialNoWIFI):
             print("Raspberry Identified: RaspberryNoWIFI")
+            baseURL = 'https://api.thingspeak.com/update?api_key=%s' % myAPI_TestACC 
           if(PISerialNumber == SerialNewest):
             print("Raspberry Identified: RaspberryNewest")
-
+            baseURL = 'https://api.thingspeak.com/update?api_key=%s' % myAPI_TestACC
+        if(PISerialNumber == SerialLSV33):
+            print("Raspberry Identified: RaspberryNewest")
+            baseURL = 'https://api.thingspeak.com/update?api_key=%s' % myAPI_LSV33
             
         if len(filtered_humidity_Sensor9) > 0: # or we could have used filtered_temperature instead
             # here you can do whatever you want with the variables: print them, file them out, anything
