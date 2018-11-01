@@ -44,7 +44,7 @@ myAPI = "LQYHZ7MCQR6SK6T8"      #Used for Testbench account
 #Raspberry PI Serials
 SerialNoWIFI = '000000006473aedd'
 SerialNewest = '000000002efbf320'
-#SerialSondervig =
+# SerialSondervig =
 
 #Hardware Pins
 OC_11 = 17                              #GPIO 17 (open collector for reset of sensor 9)
