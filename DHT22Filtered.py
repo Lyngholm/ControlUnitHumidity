@@ -44,7 +44,7 @@ myAPI_TestACC = "LQYHZ7MCQR6SK6T8"      #Used for Testbench account
 #Raspberry PI Serials
 SerialNoWIFI = '000000006473aedd'
 SerialNewest = '000000002efbf320'
-SerialLSV33 = '1111111111111111'
+SerialLSV33 = '000000001296c725'         #OldRaspberry pi - placed in Søndervig
 
 #Hardware Pins
 OC_11 = 17                              #GPIO 17 (open collector for reset of sensor 9)
