@@ -25,7 +25,7 @@ Ideas:
 12) Done - The counter uploaded for thingspeak must contain a status counter instead (minutes in latest state).
 13) Read sensors in a thread configured for sensor a and b with parametre.
 14) Make myAPI dependant on the IP Addr in order to make the device in Søndervig running on same codebase.
-
+15) The state is not correct during startup. If the engine is running and you restart - then the status is OFF even though the engine is running :-)
 """
 
 import sys 
@@ -188,8 +188,8 @@ def Main():
 #    data_collector_Sens10 = threading.Thread(name='ReadSensor10', target = readingValues, args=(10, OC_13,))
 #    data_collector_Sens10.start()
 
-    MaxHumidityBeforeStart = 63 #Humidty to exceed efore engine starts
-    MinHumidityBeforeStop = 57 #Humdity before engine stops
+    MaxHumidityBeforeStart = 66 #Humidty to exceed efore engine starts 181111 ELT: 63->66
+    MinHumidityBeforeStop = 60 #Humdity before engine stops 181111 ELT: 57->60
     EngineStatus = "OFF"
     OldEngineStatus = "OFF"
     EngineOn = 0
