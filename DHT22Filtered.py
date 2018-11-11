@@ -275,7 +275,7 @@ def Main():
             EngineOffCounter = round((time.time()-OldDateTime)/60,1)        #Increment off counter
         else:
             EngineOnCounter = round((time.time()-OldDateTime)/60,1)        #Increment on counter
-
+        sleep(10)
     # wait until the thread is finished
     data_collector_Sens9.join()
 
