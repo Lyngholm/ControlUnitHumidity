@@ -212,8 +212,8 @@ def Main():
           if(PISerialNumber == SerialNewest):
             print("Raspberry Identified: RaspberryNewest")
             baseURL = 'https://api.thingspeak.com/update?api_key=%s' % myAPI_TestACC
-        if(PISerialNumber == SerialLSV33):
-            print("Raspberry Identified: RaspberryNewest")
+          if(PISerialNumber == SerialLSV33):
+            print("Raspberry Identified: OldRaspberry")
             baseURL = 'https://api.thingspeak.com/update?api_key=%s' % myAPI_LSV33
             
         if len(filtered_humidity_Sensor9) > 0: # or we could have used filtered_temperature instead
