@@ -45,6 +45,7 @@ myAPI_TestACC = "LQYHZ7MCQR6SK6T8"      #Used for Testbench account
 SerialNoWIFI = '000000006473aedd'
 SerialNewest = '000000002efbf320'
 SerialLSV33 = '000000001296c725'         #OldRaspberry pi - placed in Søndervig
+Serial181112 = '00000000824ecc62'
 
 #Hardware Pins
 OC_11 = 17                              #GPIO 17 (open collector for reset of sensor 9)
@@ -215,6 +216,10 @@ def Main():
           if(PISerialNumber == SerialLSV33):
             print("Raspberry Identified: OldRaspberry")
             baseURL = 'https://api.thingspeak.com/update?api_key=%s' % myAPI_LSV33
+          if(PISerialNumber == Serial181112):
+            print("Raspberry Identified: Raspberry181112")
+            baseURL = 'https://api.thingspeak.com/update?api_key=%s' % myAPI_TestACC
+          
             
         if len(filtered_humidity_Sensor9) > 0: # or we could have used filtered_temperature instead
             # here you can do whatever you want with the variables: print them, file them out, anything
