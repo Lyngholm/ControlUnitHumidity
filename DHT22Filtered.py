@@ -190,7 +190,7 @@ def Main():
 #    data_collector_Sens10.start()
 
     MaxHumidityBeforeStart = 66 #Humidty to exceed efore engine starts 181111 ELT: 63->66
-    MinHumidityBeforeStop = 60 #Humdity before engine stops 181111 ELT: 57->60
+    MinHumidityBeforeStop = 61 #Humdity before engine stops 181111 ELT: 57->60 181128 ELT: Stop changed to 61
     EngineStatus = "OFF"
     OldEngineStatus = "OFF"
     EngineOn = 0
