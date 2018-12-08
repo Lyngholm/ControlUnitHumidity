@@ -228,9 +228,9 @@ def Main():
             print('{},{:.01f},{:.01f}' .format(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), temperature_Sensor9, humidity_Sensor9))
             
             #   EngineControl 
-            if(EngineStatus == "On")                    #Ensure relay match current states, to avoid error during reset of controller
+            if(EngineStatus == "On"):                    #Ensure relay match current states, to avoid error during reset of controller
                 GPIO.output(RELAY, ON)                  # RELAY set GPIO24 to 1/GPIO.HIGH/True
-            if/EngineStatus == "Off"
+            if(EngineStatus == "Off):
                 GPIO.output(RELAY, OFF)                  # RELAY set GPIO24 to 1/GPIO.HIGH/Low
             if(humidity_Sensor9 > MaxHumidityBeforeStart):# and EngineStatus == "OFF"):
                 if(humidityHighCounter > 2):
