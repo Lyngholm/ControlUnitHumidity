@@ -189,8 +189,8 @@ def Main():
 #    data_collector_Sens10 = threading.Thread(name='ReadSensor10', target = readingValues, args=(10, OC_13,))
 #    data_collector_Sens10.start()
 
-    MaxHumidityBeforeStart = 66 #Humidty to exceed efore engine starts 181111 ELT: 63->66
-    MinHumidityBeforeStop = 61 #Humdity before engine stops 181111 ELT: 57->60 181128 ELT: Stop changed to 61
+    MaxHumidityBeforeStart = 68 #Humidty to exceed efore engine starts 181111 ELT: 63->66 181208 ELT: 66->68
+    MinHumidityBeforeStop = 64 #Humdity before engine stops 181111 ELT: 57->60 181128 ELT: Stop changed to 61 181208: 61->64
     EngineStatus = "OFF"
     OldEngineStatus = "OFF"
     EngineOn = 0
