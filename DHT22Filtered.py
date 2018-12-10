@@ -24,8 +24,8 @@ Ideas:
 11) Done - Enginge on and off counter must be minutes and not iterations
 12) Done - The counter uploaded for thingspeak must contain a status counter instead (minutes in latest state).
 13) Read sensors in a thread configured for sensor a and b with parametre.
-14) Make myAPI dependant on the IP Addr in order to make the device in Søndervig running on same codebase.
-15) The state is not correct during startup. If the engine is running and you restart - then the status is OFF even though the engine is running :-)
+14) Done - Make myAPI dependant on the IP Addr in order to make the device in Søndervig running on same codebase.
+15) Done - The state is not correct during startup. If the engine is running and you restart - then the status is OFF even though the engine is running :-)
 """
 
 import sys 
@@ -279,7 +279,7 @@ def Main():
 #        sleep(3)
         if(OldEngineStatus != EngineStatus):
             OldDateTime = time.time()  #Store datetime
-            OldEngingStatus = EngineStatus  #EngineStatus is updated, store OldStatus    
+            OldEngineStatus = EngineStatus  #EngineStatus is updated, store OldStatus    
         
         if(EngineStatus == "OFF"):  #Enginge is OFF
             EngineOffCounter = round((time.time()-OldDateTime)/60,1)        #Increment off counter
