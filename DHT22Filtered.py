@@ -121,7 +121,9 @@ def readingValues(SensorToUse, ResetPin):
     SensorCounter = 0
     values = []
     a=1
-    b=-4.2
+    b10=-4.2
+    b9=-4
+
     MeasuredValidDataInARow = 0
     MeasuredInvalidInARow = 0
     
@@ -140,8 +142,11 @@ def readingValues(SensorToUse, ResetPin):
                 print("Execption! IO error on sensor - continue.")
             print("RawData hum, tmp:", humidity, temp)
 
+            if(SensorToUse == 9):
+                humidity = humidity+b9
+
             if(SensorToUse == 10):
-                humidity = humidity+b
+                humidity = humidity+b10
             SensorCounter +=1    
            
             if(str(temp) == "None" or str(humidity) == "None"): #Error - reset DHT and continue
