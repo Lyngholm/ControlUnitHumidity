@@ -165,6 +165,7 @@ def readingValues(SensorToUse, ResetPin):
                     GPIO.output(ResetPin, ON)        #Sensor 9 ON
                     MeasuredValuedIsInvalid = 1
                 else:
+                    humidity = humidity + b9
                     math.isnan(temp) == False and math.isnan(humidity) == False
                     values.append({"temp" : temp, "hum" : humidity})
                     counter += 1
