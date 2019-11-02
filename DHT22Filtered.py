@@ -122,7 +122,7 @@ def readingValues(SensorToUse, ResetPin):
     values = []
     a=1
     b10=-4.2
-    b9=-4
+    b9=10
 
     MeasuredValidDataInARow = 0
     MeasuredInvalidInARow = 0
@@ -142,8 +142,8 @@ def readingValues(SensorToUse, ResetPin):
                 print("Execption! IO error on sensor - continue.")
             print("RawData hum, tmp:", humidity, temp)
 
-#            if(SensorToUse == 9):
-#                humidity = humidity+b9
+            if(SensorToUse == 9):
+                humidity = humidity+b9
 
             if(SensorToUse == 10):
                 humidity = humidity+b10
