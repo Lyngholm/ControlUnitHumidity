@@ -122,7 +122,7 @@ def readingValues(SensorToUse, ResetPin):
     values = []
     a=1
     b10=-4.2
-    b9=10
+    b9=1
 
     MeasuredValidDataInARow = 0
     MeasuredInvalidInARow = 0
@@ -191,8 +191,8 @@ def Main():
 #    data_collector_Sens10 = threading.Thread(name='ReadSensor10', target = readingValues, args=(10, OC_13,))
 #    data_collector_Sens10.start()
 
-    MaxHumidityBeforeStart = 77 #68-8 #Humidty to exceed efore engine starts 181111 ELT: 63->66 181208 ELT: 66->68 ELT190105 +4 added to compensate for sensor offset 190426 ELT: +7 added
-    MinHumidityBeforeStop = 73 #64-8 #Humdity before engine stops 181111 ELT: 57->60 181128 ELT: Stop changed to 61 181208: 61->64 ELT 190105 +4 added to compensate for sensor offset 190426 ELT: +7 added
+    MaxHumidityBeforeStart = 68 #68-8 #Humidty to exceed efore engine starts 181111 ELT: 63->66 181208 ELT: 66->68 ELT190105 +4 added to compensate for sensor offset 190426 ELT: +7 added
+    MinHumidityBeforeStop = 64 #64-8 #Humdity before engine stops 181111 ELT: 57->60 181128 ELT: Stop changed to 61 181208: 61->64 ELT 190105 +4 added to compensate for sensor offset 190426 ELT: +7 added
     EngineStatus = "OFF"
     OldEngineStatus = "OFF"
     EngineOn = 0
