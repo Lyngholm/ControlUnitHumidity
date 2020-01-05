@@ -122,7 +122,7 @@ def readingValues(SensorToUse, ResetPin):
     values = []
     a=1
     b10=-10.2
-    b9=1
+    b9=-5
 
     MeasuredValidDataInARow = 0
     MeasuredInvalidInARow = 0
