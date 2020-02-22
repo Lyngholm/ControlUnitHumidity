@@ -121,7 +121,7 @@ def readingValues(SensorToUse, ResetPin):
     SensorCounter = 0
     values = []
     a=1
-    b10=-10.2
+    b10=-22.2
     b9=-19
 
     MeasuredValidDataInARow = 0
