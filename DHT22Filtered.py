@@ -138,7 +138,7 @@ def readingValues(SensorToUse, ResetPin):
                 lock.acquire()
                 GPIO.setup(ResetPin, GPIO.OUT)           # GREEN LED set GPIO24 as an output
                 GPIO.output(ResetPin, ON)        #Sensor 9 ON
-                sleep(0.1)
+                sleep(0.01)
                 [humidity, temp] = Adafruit_DHT.read_retry(Adafruit_DHT.DHT22, SensorToUse)
                 GPIO.output(ResetPin, OFF)       #Sensor 9 OFF
                 lock.release()
@@ -150,18 +150,18 @@ def readingValues(SensorToUse, ResetPin):
            
             if(str(temp) == "None" or str(humidity) == "None"): #Error - reset DHT and continue
                 print("Sensor X returns None:", SensorToUse)
-                GPIO.setup(ResetPin, GPIO.OUT)           # GREEN LED set GPIO24 as an output
-                GPIO.output(ResetPin, OFF)       #Sensor 9 OFF
-                sleep(0.1)
-                GPIO.output(ResetPin, ON)        #Sensor 9 ON
+         #       GPIO.setup(ResetPin, GPIO.OUT)           # GREEN LED set GPIO24 as an output
+        #        GPIO.output(ResetPin, OFF)       #Sensor 9 OFF
+        #        sleep(0.1)
+         #       GPIO.output(ResetPin, ON)        #Sensor 9 ON
                 MeasuredValuedIsInvalid = 1
             else:
                 if(humidity > 100 or temp > 50):
                     print("Reset Sensor")
-                    GPIO.setup(ResetPin, GPIO.OUT)           # GREEN LED set GPIO24 as an output
-                    GPIO.output(ResetPin, OFF)       #Sensor 9 OFF
-                    sleep(0.1)
-                    GPIO.output(ResetPin, ON)        #Sensor 9 ON
+           #         GPIO.setup(ResetPin, GPIO.OUT)           # GREEN LED set GPIO24 as an output
+            #        GPIO.output(ResetPin, OFF)       #Sensor 9 OFF
+          #          sleep(0.1)
+            #        GPIO.output(ResetPin, ON)        #Sensor 9 ON
                     MeasuredValuedIsInvalid = 1
                 else:
                     if(SensorToUse == 9):
