@@ -136,7 +136,11 @@ def readingValues(SensorToUse, ResetPin):
             MeasuredValuedIsInvalid = 1   #Assume invalid data
             try:                
                 lock.acquire()
+                GPIO.setup(ResetPin, GPIO.OUT)           # GREEN LED set GPIO24 as an output
+                GPIO.output(ResetPin, ON)        #Sensor 9 ON
+                sleep(0.1)
                 [humidity, temp] = Adafruit_DHT.read_retry(Adafruit_DHT.DHT22, SensorToUse)
+                GPIO.output(ResetPin, OFF)       #Sensor 9 OFF
                 lock.release()
             except IOError:
                 print("Execption! IO error on sensor - continue.")
