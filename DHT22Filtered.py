@@ -150,16 +150,16 @@ def readingValues(SensorToUse, ResetPin):
            
             if(str(temp) == "None" or str(humidity) == "None"): #Error - reset DHT and continue
                 print("Sensor X returns None:", SensorToUse)
-                GPIO.setup(ResetPin, GPIO.OUT)           # GREEN LED set GPIO24 as an output
-                GPIO.output(ResetPin, OFF)       #Sensor 9 OFF
+          #      GPIO.setup(ResetPin, GPIO.OUT)           # GREEN LED set GPIO24 as an output
+          #      GPIO.output(ResetPin, OFF)       #Sensor 9 OFF
                 sleep(0.1)
          #       GPIO.output(ResetPin, ON)        #Sensor 9 ON
                 MeasuredValuedIsInvalid = 1
             else:
                 if(humidity > 100 or temp > 50):
                     print("Reset Sensor")
-                    GPIO.setup(ResetPin, GPIO.OUT)           # GREEN LED set GPIO24 as an output
-                    GPIO.output(ResetPin, OFF)       #Sensor 9 OFF
+             #       GPIO.setup(ResetPin, GPIO.OUT)           # GREEN LED set GPIO24 as an output
+             #       GPIO.output(ResetPin, OFF)       #Sensor 9 OFF
                     sleep(0.1)
             #        GPIO.output(ResetPin, ON)        #Sensor 9 ON
                     MeasuredValuedIsInvalid = 1
